@@ -1,7 +1,5 @@
 package exercises;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -12,7 +10,9 @@ public class Problems {
         //formattedOutput();
         //dollarGame();
         //rollADie();
-        countFees();
+        //countFees();
+        //printDayOfTheWeek();
+        //validatePassword("in7hesky", "Nadezhni&par0l");
     }
 
     //1. Java Fundamentals Problem
@@ -108,7 +108,25 @@ public class Problems {
 
     //5. Overloading Methods within a Class [billcalc package] ...
 
-    //6.
+    //6. Useful Trick for Arrays Problem
+    public static void printDayOfTheWeek() {
+        String [] weekdays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+        System.out.print("Choose a day: ");
+        try {
+            System.out.println(weekdays[scanner.nextInt() - 1]);
+        } catch (Exception e) {
+            System.out.println("Incorrect input. Only numbers 1 to 7 are appropriate!");
+        }
+    }
+    //7. Strings Problem (Validator class)
+    public static void validatePassword(String username, String password) {
+        Validator validator = new Validator(username, password);
+        if (validator.meetsAllRequirements()) {
+            System.out.println("Password is valid.");
+        } else {
+            System.out.println("Password is invalid.");
+        }
+    }
 
 
 }
