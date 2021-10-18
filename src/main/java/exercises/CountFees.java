@@ -3,7 +3,8 @@ package exercises;
 import java.util.Scanner;
 
 /**
- * Not really a class, it's just a placeholder for multiple methods.
+ * CAUTION!
+ * Not designed as a real class. it's just a placeholder for multiple methods.
  */
 public class CountFees {
 

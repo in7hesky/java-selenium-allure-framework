@@ -8,10 +8,10 @@ public class Bill {
     public static final double SUBTOTAL_CHARGE = 0.15;
     private static int id_tracker = 0;
 
-    private int id;
-    private double baseCost;
-    private int allottedMinutes;
-    private int usedMinutes;
+    private final int id;
+    private final double baseCost;
+    private final int allottedMinutes;
+    private final int usedMinutes;
 
 
     public Bill() {

@@ -92,6 +92,7 @@ public class Problems {
             System.out.println("Incorrect input. Only numbers 1 to 7 are appropriate!");
         }
     }
+
     //7. Strings Problem (Validator class)
     public static void validatePassword(String username, String password) {
         Validator validator = new Validator(username, password);
@@ -102,5 +103,24 @@ public class Problems {
         }
     }
 
+    //8. Access Limitations & Multiple Inheritance [cakes package]
 
+    //9. Polymorphism Problem [fruits package]
+
+    //10. Abstraction & Interfaces Problem [animals package]
+
+    //11. Looping through Collections and Maps [grades package]
+
+    //12. Throwing Exceptions Task
+    public static void divideByZero() {
+        try {
+            int c = 30 / 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("Division is fun");
+        }
+    }
+
+    //13. Final - [cointossgame package]
 }
