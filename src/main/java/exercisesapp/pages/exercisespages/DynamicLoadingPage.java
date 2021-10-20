@@ -1,11 +1,11 @@
-package pages.exercisespages;
+package exercisesapp.pages.exercisespages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.BasePage;
+import exercisesapp.pages.BasePage;
 
 public class DynamicLoadingPage extends BasePage {
     public static final String PAGE_URL = "https://the-internet.herokuapp.com/dynamic_loading/2";

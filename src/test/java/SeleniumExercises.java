@@ -1,3 +1,4 @@
+import exercisesapp.ExerciseApp;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,7 +9,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.exercisespages.*;
+import exercisesapp.pages.exercisespages.*;
 
 public class SeleniumExercises {
     public static final String TESTING_EMAIL = "helloworld@gmail.com";
@@ -16,6 +17,7 @@ public class SeleniumExercises {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
+    protected ExerciseApp app;
 
     @BeforeClass
     public void setUp() {
@@ -25,14 +27,15 @@ public class SeleniumExercises {
     @BeforeMethod
     public void initDriver() {
         driver = new ChromeDriver();
+        app = new ExerciseApp(driver);
         wait = new WebDriverWait(driver, 10);
     }
 
     @Test
     public void testFindingWebElements() {
-        var homePage = new HomePage(driver).openPage();
+        var homePage =  app.homePage.openPage();
 
-        int optionsAmount = homePage.openPage().clickShiftingContentLink().
+        int optionsAmount = homePage.clickShiftingContentLink().
                         chooseMenuExample().getOptionsAmount();
 
         Assert.assertEquals(optionsAmount, 5);
@@ -40,7 +43,7 @@ public class SeleniumExercises {
 
     @Test
     public void testInteractingWith() {
-        var forgotPasswordPage = new HomePage(driver).openPage().clickForgotPasswordLink();
+        var forgotPasswordPage = app.homePage.openPage().clickForgotPasswordLink();
 
         String resultMessage = forgotPasswordPage.inputAndSubmitEmail(TESTING_EMAIL).getResultText();
 
@@ -49,7 +52,7 @@ public class SeleniumExercises {
 
     @Test
     public void testAdditionalKeys() {
-        var sliderPage = new SliderPage(driver).openPage();
+        var sliderPage = app.sliderPage.openPage();
 
         double selectedValue = sliderPage.setValue(SLIDER_TARGET).getSelectedValue();
 
@@ -59,7 +62,7 @@ public class SeleniumExercises {
 
     @Test
     public void testModals() {
-        var contextMenuPage = new ContextMenuPage(driver).openPage();
+        var contextMenuPage = app.contextMenuPage.openPage();
 
         String alertsText = contextMenuPage.callContextMenuOnTarget().getAlertsText();
 
@@ -69,7 +72,7 @@ public class SeleniumExercises {
     @Test
     public void testFrames() {
         var softAssert = new SoftAssert();
-        var nestedFramesPage = new NestedFramesPage(driver).openPage();
+        var nestedFramesPage = app.nestedFramesPage.openPage();
 
         String bottomFrameText = nestedFramesPage.chooseFrameToGetText(1);
         String leftFrameText = nestedFramesPage.chooseFrameToGetText(0, 0);
@@ -81,7 +84,7 @@ public class SeleniumExercises {
 
     @Test
     public void testWaitStrategies() {
-        var dynamicLoadingPage = new DynamicLoadingPage(driver).openPage();
+        var dynamicLoadingPage = app.dynamicLoadingPage.openPage();
 
         String loadedText = dynamicLoadingPage.clickToLoadContent().getLoadedText();
 

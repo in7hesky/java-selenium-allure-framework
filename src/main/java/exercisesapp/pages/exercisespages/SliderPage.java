@@ -1,11 +1,10 @@
-package pages.exercisespages;
+package exercisesapp.pages.exercisespages;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import pages.BasePage;
+import exercisesapp.pages.BasePage;
 
 public class SliderPage extends BasePage {
     private static final String PAGE_URL = "https://the-internet.herokuapp.com/horizontal_slider";
