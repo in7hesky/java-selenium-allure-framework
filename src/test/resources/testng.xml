@@ -8,7 +8,7 @@
 
     <test name="Parallel Tests">
         <classes>
-            <class name="SeleniumExercises" />
+            <class name="SeleniumExercisesTest" />
         </classes>
     </test>
 

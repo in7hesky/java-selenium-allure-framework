@@ -3,7 +3,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 
-public class SeleniumExercises extends BaseTest {
+public class SeleniumExercisesTest extends BaseTest {
     public static final String TESTING_EMAIL = "helloworld@gmail.com";
     public static final double SLIDER_TARGET = 2.0;
     public static final int EXPECTED_OPTIONS_AMOUNT = 5;
