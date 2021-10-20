@@ -1,21 +1,15 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.exercisespages.ContextMenuPage;
 import pages.exercisespages.HomePage;
 import pages.exercisespages.SliderPage;
-
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class SeleniumExercises {
     public static final String TESTING_EMAIL = "helloworld@gmail.com";
@@ -62,6 +56,16 @@ public class SeleniumExercises {
 
         Assert.assertEquals(selectedValue, SLIDER_TARGET);
     }
+
+    @Test
+    public void testModals() {
+        var contextMenuPage = new ContextMenuPage(driver).openPage();
+
+        String alertsText = contextMenuPage.callContextMenuOnTarget().getAlertsText();
+
+        Assert.assertTrue(alertsText.contains("selected"));
+    }
+
 
 
     @AfterMethod
