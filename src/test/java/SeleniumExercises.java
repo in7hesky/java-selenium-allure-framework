@@ -1,4 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -7,8 +8,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.exercisespages.ContextMenuPage;
 import pages.exercisespages.HomePage;
+import pages.exercisespages.NestedFramesPage;
 import pages.exercisespages.SliderPage;
 
 public class SeleniumExercises {
@@ -55,6 +58,7 @@ public class SeleniumExercises {
         double selectedValue = sliderPage.setValue(SLIDER_TARGET).getSelectedValue();
 
         Assert.assertEquals(selectedValue, SLIDER_TARGET);
+
     }
 
     @Test
@@ -64,6 +68,19 @@ public class SeleniumExercises {
         String alertsText = contextMenuPage.callContextMenuOnTarget().getAlertsText();
 
         Assert.assertTrue(alertsText.contains("selected"));
+    }
+
+    @Test
+    public void testFrames() {
+        var softAssert = new SoftAssert();
+        var nestedFramesPage = new NestedFramesPage(driver).openPage();
+
+        String bottomFrameText = nestedFramesPage.chooseFrameToGetText(1);
+        String leftFrameText = nestedFramesPage.chooseFrameToGetText(0, 0);
+
+        softAssert.assertTrue(bottomFrameText.equalsIgnoreCase("bottom"));
+        softAssert.assertTrue(leftFrameText.equalsIgnoreCase("left"));
+        softAssert.assertAll();
     }
 
 
