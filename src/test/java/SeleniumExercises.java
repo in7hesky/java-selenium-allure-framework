@@ -16,7 +16,6 @@ public class SeleniumExercises {
     public static final double SLIDER_TARGET = 2.0;
 
     protected WebDriver driver;
-    protected WebDriverWait wait;
     protected ExerciseApp app;
 
     @BeforeClass
@@ -28,7 +27,6 @@ public class SeleniumExercises {
     public void initDriver() {
         driver = new ChromeDriver();
         app = new ExerciseApp(driver);
-        wait = new WebDriverWait(driver, 10);
     }
 
     @Test
