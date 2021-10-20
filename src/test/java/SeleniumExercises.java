@@ -1,33 +1,12 @@
-import exercisesapp.ExerciseApp;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import exercisesapp.pages.exercisespages.*;
 
-public class SeleniumExercises {
+
+public class SeleniumExercises extends BaseTest {
     public static final String TESTING_EMAIL = "helloworld@gmail.com";
     public static final double SLIDER_TARGET = 2.0;
-
-    protected WebDriver driver;
-    protected ExerciseApp app;
-
-    @BeforeClass
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-    }
-
-    @BeforeMethod
-    public void initDriver() {
-        driver = new ChromeDriver();
-        app = new ExerciseApp(driver);
-    }
+    public static final int EXPECTED_OPTIONS_AMOUNT = 5;
 
     @Test
     public void testFindingWebElements() {
@@ -36,7 +15,7 @@ public class SeleniumExercises {
         int optionsAmount = homePage.clickShiftingContentLink().
                         chooseMenuExample().getOptionsAmount();
 
-        Assert.assertEquals(optionsAmount, 5);
+        Assert.assertEquals(optionsAmount, EXPECTED_OPTIONS_AMOUNT);
     }
 
     @Test
@@ -87,13 +66,5 @@ public class SeleniumExercises {
         String loadedText = dynamicLoadingPage.clickToLoadContent().getLoadedText();
 
         Assert.assertEquals(loadedText, "Hello World!");
-    }
-
-
-
-    @AfterMethod
-    public void tearDown() {
-        if (driver != null)
-            driver.quit();
     }
 }

@@ -1,23 +1,22 @@
+import exercisesapp.ExerciseApp;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
 
 public class BaseTest {
     protected WebDriver driver;
-    @BeforeTest
+    protected ExerciseApp app;
+
+    @BeforeClass
     public void driverSetup()  {
-
-        //WebDriverManager.firefoxdriver().setup();
-
+        WebDriverManager.chromedriver().setup();
     }
 
     @BeforeMethod
     public void initDriver() {
-        WebDriverManager.chromedriver().setup();
-
         this.driver = new ChromeDriver();
+        this.app = new ExerciseApp(driver);
     }
 
     //@Test

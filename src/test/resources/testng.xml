@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="SeleniumAutoTests" verbose="1" parallel="methods">
+<suite name="SeleniumAutoTests" verbose="1">
 
 <!--    <listeners>-->
 <!--        <listener class-name="A_BaseTestListener"/>-->
@@ -8,7 +8,7 @@
 
     <test name="Parallel Tests">
         <classes>
-            <class name="MainPageTest" />
+            <class name="SeleniumExercises" />
         </classes>
     </test>
 
