@@ -7,8 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import exercisesapp.pages.BasePage;
 
 public class HomePage extends BasePage {
-    private static final String PAGE_URL = "https://the-internet.herokuapp.com/";
-
     @FindBy (linkText = "Shifting Content")
     private WebElement shiftingContentLink;
     @FindBy (linkText = "Forgot Password")
@@ -34,7 +32,7 @@ public class HomePage extends BasePage {
     }
 
     public HomePage openPage() {
-        driver.get(PAGE_URL);
+        driver.get(BASE_URL);
         return this;
     }
 }

@@ -8,7 +8,7 @@ import exercisesapp.pages.BasePage;
 
 public class ContextMenuPage extends BasePage {
 
-    private static final String PAGE_URL = "https://the-internet.herokuapp.com/context_menu";
+    private static final String PAGE_URL = BASE_URL + "/context_menu";
 
     @FindBy(id = "hot-spot")
     private WebElement targetArea;

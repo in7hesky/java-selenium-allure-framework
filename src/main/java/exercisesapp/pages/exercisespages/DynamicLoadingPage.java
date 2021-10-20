@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import exercisesapp.pages.BasePage;
 
 public class DynamicLoadingPage extends BasePage {
-    public static final String PAGE_URL = "https://the-internet.herokuapp.com/dynamic_loading/2";
+    public static final String PAGE_URL = BASE_URL + "/dynamic_loading/2";
 
     @FindBy(css = "div button")
     private WebElement startButton;

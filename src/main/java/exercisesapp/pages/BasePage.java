@@ -5,6 +5,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BasePage {
+    public static final String BASE_URL = "http://the-internet.herokuapp.com";
     public static final int EXPLICIT_WAIT = 10;
 
     protected WebDriver driver;

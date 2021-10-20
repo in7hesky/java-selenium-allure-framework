@@ -7,7 +7,7 @@ import exercisesapp.pages.BasePage;
 
 public class NestedFramesPage extends BasePage {
 
-    private static final String PAGE_URL = "http://the-internet.herokuapp.com/nested_frames";
+    private static final String PAGE_URL = BASE_URL + "/nested_frames";
 
     @FindBy(tagName = "body")
     private WebElement textContainer;
@@ -16,6 +16,9 @@ public class NestedFramesPage extends BasePage {
         super(driver);
     }
 
+    /**
+     * @param indexes pass consequent indexes of frames to switch to
+     */
     public String chooseFrameToGetText(int... indexes) {
         switchToFrameByIndex(indexes);
         String frameText = textContainer.getText();
@@ -23,10 +26,6 @@ public class NestedFramesPage extends BasePage {
         return frameText;
     }
 
-    /**
-     *
-     * @param indexes pass consequent indexes of frames to switch to
-     */
     private void switchToFrameByIndex(int... indexes) {
         for (Integer index: indexes) {
             driver.switchTo().frame(index);

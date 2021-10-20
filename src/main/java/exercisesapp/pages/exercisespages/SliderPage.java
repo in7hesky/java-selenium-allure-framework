@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import exercisesapp.pages.BasePage;
 
 public class SliderPage extends BasePage {
-    private static final String PAGE_URL = "https://the-internet.herokuapp.com/horizontal_slider";
+    private static final String PAGE_URL = BASE_URL + "/horizontal_slider";
 
     @FindBy (tagName = "input")
     private WebElement slider;
