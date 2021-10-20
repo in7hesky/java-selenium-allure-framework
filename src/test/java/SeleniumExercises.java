@@ -1,5 +1,4 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -9,10 +8,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.exercisespages.ContextMenuPage;
-import pages.exercisespages.HomePage;
-import pages.exercisespages.NestedFramesPage;
-import pages.exercisespages.SliderPage;
+import pages.exercisespages.*;
 
 public class SeleniumExercises {
     public static final String TESTING_EMAIL = "helloworld@gmail.com";
@@ -81,6 +77,15 @@ public class SeleniumExercises {
         softAssert.assertTrue(bottomFrameText.equalsIgnoreCase("bottom"));
         softAssert.assertTrue(leftFrameText.equalsIgnoreCase("left"));
         softAssert.assertAll();
+    }
+
+    @Test
+    public void testWaitStrategies() {
+        var dynamicLoadingPage = new DynamicLoadingPage(driver).openPage();
+
+        String loadedText = dynamicLoadingPage.clickToLoadContent().getLoadedText();
+
+        Assert.assertEquals(loadedText, "Hello World!");
     }
 
 
