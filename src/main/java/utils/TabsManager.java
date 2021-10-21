@@ -1,4 +1,4 @@
-package exercisesapp.utils;
+package utils;
 
 import org.openqa.selenium.WebDriver;
 

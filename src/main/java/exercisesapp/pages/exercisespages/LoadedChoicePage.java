@@ -1,7 +1,7 @@
 package exercisesapp.pages.exercisespages;
 
 import exercisesapp.pages.BasePage;
-import exercisesapp.utils.TabsManager;
+import utils.TabsManager;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
