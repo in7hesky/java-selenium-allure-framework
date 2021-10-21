@@ -1,6 +1,9 @@
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 
+@Execution(ExecutionMode.CONCURRENT)
 public class SeleniumExercisesTest extends BaseTest {
     public static final String TESTING_EMAIL = "helloworld@gmail.com";
     public static final double SLIDER_TARGET = 2.0;
@@ -13,7 +16,7 @@ public class SeleniumExercisesTest extends BaseTest {
         int optionsAmount = homePage.clickShiftingContentLink().
                         chooseMenuExample().getOptionsAmount();
 
-        Assert.assertEquals(optionsAmount, EXPECTED_OPTIONS_AMOUNT);
+        Assertions.assertEquals(optionsAmount, EXPECTED_OPTIONS_AMOUNT);
     }
 
     @Test
@@ -22,7 +25,7 @@ public class SeleniumExercisesTest extends BaseTest {
 
         String resultMessage = forgotPasswordPage.inputAndSubmitEmail(TESTING_EMAIL).getResultText();
 
-        Assert.assertTrue(resultMessage.contains("Error"));
+        Assertions.assertTrue(resultMessage.contains("Error"));
     }
 
     @Test
@@ -31,7 +34,7 @@ public class SeleniumExercisesTest extends BaseTest {
 
         double selectedValue = sliderPage.setValue(SLIDER_TARGET).getSelectedValue();
 
-        Assert.assertEquals(selectedValue, SLIDER_TARGET, 0.1);
+        Assertions.assertEquals(selectedValue, SLIDER_TARGET, 0.1);
 
     }
 
@@ -41,7 +44,7 @@ public class SeleniumExercisesTest extends BaseTest {
 
         String alertsText = contextMenuPage.callContextMenuOnTarget().getAlertsText();
 
-        Assert.assertTrue(alertsText.contains("selected"));
+        Assertions.assertTrue(alertsText.contains("selected"));
     }
 
     @Test
@@ -51,8 +54,8 @@ public class SeleniumExercisesTest extends BaseTest {
         String bottomFrameText = nestedFramesPage.chooseFrameToGetText(1);
         String leftFrameText = nestedFramesPage.chooseFrameToGetText(0, 0);
 
-        Assert.assertTrue(bottomFrameText.equalsIgnoreCase("bottom"));
-        Assert.assertTrue(leftFrameText.equalsIgnoreCase("left"));
+        Assertions.assertTrue(bottomFrameText.equalsIgnoreCase("bottom"));
+        Assertions.assertTrue(leftFrameText.equalsIgnoreCase("left"));
     }
 
     @Test
@@ -61,6 +64,6 @@ public class SeleniumExercisesTest extends BaseTest {
 
         String loadedText = dynamicLoadingPage.clickToLoadContent().getLoadedText();
 
-        Assert.assertEquals(loadedText, "Hello World!");
+        Assertions.assertEquals(loadedText, "Hello World!");
     }
 }

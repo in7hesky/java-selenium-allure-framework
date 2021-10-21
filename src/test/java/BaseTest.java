@@ -1,8 +1,10 @@
 import exercisesapp.ExerciseApp;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Before;
 
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -11,11 +13,11 @@ public class BaseTest {
     protected WebDriver driver;
     protected ExerciseApp app;
 
-//    @BeforeClass
-//    public void driverSetup()  {
-//        WebDriverManager.chromedriver().setup();
-//    }
-    @Before
+    @BeforeAll
+    public static void driverSetup()  {
+        WebDriverManager.chromedriver().setup();
+    }
+    @BeforeEach
     public void initDriver() {
         driver = new ChromeDriver();
         app = new ExerciseApp(driver);
@@ -23,7 +25,7 @@ public class BaseTest {
 
     //@Test
 
-    @After
+    @AfterEach
     public void tearDown() {
         if(this.driver != null)
             driver.quit();
