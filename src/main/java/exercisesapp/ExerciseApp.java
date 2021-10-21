@@ -9,6 +9,8 @@ public class ExerciseApp {
     public ContextMenuPage contextMenuPage;
     public NestedFramesPage nestedFramesPage;
     public DynamicLoadingPage dynamicLoadingPage;
+    public DropdownPage dropdownPage;
+    public LoadedChoicePage loadedChoicePage;
 
 
     public ExerciseApp(WebDriver driver) {
@@ -17,5 +19,7 @@ public class ExerciseApp {
         this.contextMenuPage = new ContextMenuPage(driver);
         this.nestedFramesPage = new NestedFramesPage(driver);
         this.dynamicLoadingPage = new DynamicLoadingPage(driver);
+        this.dropdownPage = new DropdownPage(driver);
+        this.loadedChoicePage = new LoadedChoicePage(driver);
     }
 }

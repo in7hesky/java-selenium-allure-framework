@@ -66,4 +66,25 @@ public class SeleniumExercisesTest extends BaseTest {
 
         Assertions.assertEquals(loadedText, "Hello World!");
     }
+
+    @Test
+    public void testUsingJavaScript() {
+        int optionsToChooseAmount = 2;
+        var dropdownPage = app.dropdownPage.openPage();
+
+        int selectedOptionsAmount = dropdownPage.
+                makeDropdownMultiple().selectConsequentOptions(optionsToChooseAmount).
+                getSelectedOptionsAmount();
+
+        Assertions.assertEquals(optionsToChooseAmount, selectedOptionsAmount);
+    }
+
+    @Test
+    public void testApplicationNavigation() {
+        var loadedChoicePage = app.loadedChoicePage.openPage();
+
+        var hiddenLoadedPageInNewTab = loadedChoicePage.openHiddenLoadedInNewTab();
+
+        Assertions.assertTrue(hiddenLoadedPageInNewTab.buttonIsVisible());
+    }
 }
