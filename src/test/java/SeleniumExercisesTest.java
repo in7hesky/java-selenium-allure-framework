@@ -1,7 +1,5 @@
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
-
+import org.junit.Assert;
+import org.junit.Test;
 
 public class SeleniumExercisesTest extends BaseTest {
     public static final String TESTING_EMAIL = "helloworld@gmail.com";
@@ -33,7 +31,7 @@ public class SeleniumExercisesTest extends BaseTest {
 
         double selectedValue = sliderPage.setValue(SLIDER_TARGET).getSelectedValue();
 
-        Assert.assertEquals(selectedValue, SLIDER_TARGET);
+        Assert.assertEquals(selectedValue, SLIDER_TARGET, 0.1);
 
     }
 
@@ -48,15 +46,13 @@ public class SeleniumExercisesTest extends BaseTest {
 
     @Test
     public void testFrames() {
-        var softAssert = new SoftAssert();
         var nestedFramesPage = app.nestedFramesPage.openPage();
 
         String bottomFrameText = nestedFramesPage.chooseFrameToGetText(1);
         String leftFrameText = nestedFramesPage.chooseFrameToGetText(0, 0);
 
-        softAssert.assertTrue(bottomFrameText.equalsIgnoreCase("bottom"));
-        softAssert.assertTrue(leftFrameText.equalsIgnoreCase("left"));
-        softAssert.assertAll();
+        Assert.assertTrue(bottomFrameText.equalsIgnoreCase("bottom"));
+        Assert.assertTrue(leftFrameText.equalsIgnoreCase("left"));
     }
 
     @Test
