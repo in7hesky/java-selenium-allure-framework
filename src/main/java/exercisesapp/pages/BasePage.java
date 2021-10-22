@@ -4,9 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public abstract class BasePage {
     public static final String BASE_URL = "http://the-internet.herokuapp.com";
-    public static final int EXPLICIT_WAIT = 10;
+    public static final Duration EXPLICIT_WAIT = Duration.ofSeconds(5);
 
     protected WebDriver driver;
     protected WebDriverWait wait;

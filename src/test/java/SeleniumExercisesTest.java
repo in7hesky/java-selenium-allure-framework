@@ -2,11 +2,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 @Execution(ExecutionMode.CONCURRENT)
 public class SeleniumExercisesTest extends BaseTest {
     public static final String TESTING_EMAIL = "helloworld@gmail.com";
-    public static final double SLIDER_TARGET = 2.0;
     public static final int EXPECTED_OPTIONS_AMOUNT = 5;
 
     @Test
@@ -23,19 +24,20 @@ public class SeleniumExercisesTest extends BaseTest {
     public void testInteractingWith() {
         var forgotPasswordPage = app.homePage.openPage().clickForgotPasswordLink();
 
-        String resultMessage = forgotPasswordPage.inputAndSubmitEmail(TESTING_EMAIL).getResultText();
+        String resultMessage = forgotPasswordPage.
+                inputAndSubmitEmail(TESTING_EMAIL).getResultText();
 
         Assertions.assertTrue(resultMessage.contains("Error"));
     }
 
-    @Test
-    public void testAdditionalKeys() {
+    @ParameterizedTest
+    @ValueSource(doubles = {2.0, 4.0})
+    public void testAdditionalKeys(double sliderTargetValue) {
         var sliderPage = app.sliderPage.openPage();
 
-        double selectedValue = sliderPage.setValue(SLIDER_TARGET).getSelectedValue();
+        double selectedValue = sliderPage.setValue(sliderTargetValue).getSelectedValue();
 
-        Assertions.assertEquals(selectedValue, SLIDER_TARGET, 0.1);
-
+        Assertions.assertEquals(selectedValue, sliderTargetValue, 0.1);
     }
 
     @Test
