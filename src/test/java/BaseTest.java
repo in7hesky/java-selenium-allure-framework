@@ -1,5 +1,4 @@
-import exercisesapp.ExerciseApp;
-
+import app.App;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
@@ -11,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BaseTest {
     protected WebDriver driver;
-    protected ExerciseApp app;
+    protected App app;
 
     @BeforeAll
     public static void driverSetup()  {
@@ -21,7 +20,7 @@ public class BaseTest {
     @BeforeEach
     public void initDriver() {
         driver = new ChromeDriver();
-        app = new ExerciseApp(driver);
+        app = new App(driver);
     }
 
     //@Test
