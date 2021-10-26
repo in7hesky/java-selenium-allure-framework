@@ -16,7 +16,6 @@ public class TopicsTest extends BaseTest {
     @BeforeEach
     public void initDriver() {
         driver.set(WebDriverFactory.getWebDriver());
-
         app = new App(getDriver());
     }
 

@@ -24,6 +24,7 @@ public class BaseTest {
         switch (browserType) {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
+                break;
             case "chrome":
             default:
                 WebDriverManager.chromedriver().setup();
