@@ -16,7 +16,7 @@ public class TopicsTest extends BaseTest {
     @BeforeEach
     public void initDriver() {
         driver.set(WebDriverFactory.getWebDriver());
-        getDriver().manage().window().maximize();
+
         app = new App(getDriver());
     }
 
@@ -42,7 +42,7 @@ public class TopicsTest extends BaseTest {
                 clickOnDropdownElemByLabel("Careers", false).
                 clickOnDropdownElemByLabel("Computer Science", true);
         int resultsAmount = filterPage.getSearchResultsAmount();
-        Assertions.fail();
+
         Assertions.assertTrue(resultsAmount >= 50 && resultsAmount <= 100 );
     }
 
@@ -51,7 +51,7 @@ public class TopicsTest extends BaseTest {
         var topicsPage = app.topicsPage.openPage();
 
         String currentUrl = topicsPage.clickOnNasaLogo().getCurrentUrl();
-        Assertions.fail();
+
         Assertions.assertEquals(BasePage.BASE_URL, currentUrl);
     }
 

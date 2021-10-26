@@ -14,7 +14,7 @@ public class SliderTest extends BaseTest {
     @BeforeEach
     public void initDriver() {
         driver.set(WebDriverFactory.getWebDriver());
-        getDriver().manage().window().maximize();
+
         app = new App(getDriver());
     }
 

@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -52,6 +53,7 @@ public class HomePage extends BasePage {
     }
 
     public HomePage loadMoreStories() {
+        wait.until(ExpectedConditions.visibilityOf(moreStoriesButton));
         moreStoriesButton.click();
         return this;
     }
@@ -66,6 +68,7 @@ public class HomePage extends BasePage {
 
 
     public HomePage openPage() {
+
         driver.get(BasePage.BASE_URL);
         return this;
     }

@@ -1,7 +1,6 @@
 package app.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -45,7 +44,7 @@ public class GalleryPage extends BasePage {
 
     public GalleryPage openPage() {
         driver.get(BASE_URL + PAGE_URL);
-        wait.until(ExpectedConditions.visibilityOf(loadedImages.get(0)));
+        wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector("div.image"), 24));
         return this;
     }
 

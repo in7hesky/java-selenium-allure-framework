@@ -16,7 +16,7 @@ public class HomePageTest extends BaseTest {
     @BeforeEach
     public void initDriver() {
         driver.set(WebDriverFactory.getWebDriver());
-        getDriver().manage().window().maximize();
+
         app = new App(getDriver());
     }
 
@@ -40,7 +40,7 @@ public class HomePageTest extends BaseTest {
 
         int initialStoriesAmount = homePage.getStoriesAmount();
         homePage.loadMoreStories();
-        Assertions.fail();
+
         Assertions.assertTrue(initialStoriesAmount < homePage.getStoriesAmount());
     }
 
@@ -49,7 +49,6 @@ public class HomePageTest extends BaseTest {
         var homePage = app.homePage.openPage();
 
         homePage.hoverMouseOverDropdown(TARGET_DROPDOWN_NAME);
-        Assertions.fail();
 
         Assertions.assertTrue(homePage.canClickOnDropdownOption(TARGET_OPTION_NAME));
     }

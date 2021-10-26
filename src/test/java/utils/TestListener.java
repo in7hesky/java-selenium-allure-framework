@@ -22,23 +22,22 @@ public class TestListener implements TestWatcher {
                 "image/png", "png",
                 ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES)
         );
-        getDriver(context).close();
+        getDriver(context).quit();
     }
 
     @Override
     public void testDisabled(ExtensionContext context, Optional<String> reason) {
-        getDriver(context).close();
+        getDriver(context).quit();
     }
 
     @Override
     public void testSuccessful(ExtensionContext context) {
-        getDriver(context).close();
-
+        getDriver(context).quit();
     }
 
     @Override
     public void testAborted(ExtensionContext context, Throwable cause) {
-        getDriver(context).close();
+        getDriver(context).quit();
     }
 
     private WebDriver getDriver(ExtensionContext context) {
