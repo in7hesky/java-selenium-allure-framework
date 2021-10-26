@@ -64,6 +64,7 @@ public class HomePage extends BasePage {
         return driver.getCurrentUrl();
     }
 
+
     public HomePage openPage() {
         driver.get(BasePage.BASE_URL);
         return this;
