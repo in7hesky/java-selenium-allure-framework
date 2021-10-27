@@ -1,3 +1,4 @@
+import app.AppConfig;
 import app.pages.BasePage;
 import app.pages.TopicsPage;
 import io.qameta.allure.Description;
@@ -12,22 +13,22 @@ public class TopicsTest extends BaseTest {
     @Test
     @Description("Clicks on top-left NASA logo to assure correct linking to the Home Page")
     public void shouldGetToHomePageAfterClickingOnLogo() {
-        var topicsPage = app.topicsPage.openPage();
+        var topicsPage = app.toTopicsPage();
 
         String currentUrl = topicsPage.clickOnNasaLogo().getCurrentUrl();
 
-        Assertions.assertEquals(BasePage.BASE_URL, currentUrl);
+        Assertions.assertEquals(AppConfig.BASE_URL + AppConfig.HOME_PAGE_PATH, currentUrl);
     }
 
     @Test
     @Description("Checks in URL each time if path now contains a link to an appropriate section in of a page")
     public void shouldVerifyCorrectMenuLettersPointing() {
-        var topicsPage = app.topicsPage.openPage();
+        var topicsPage = app.toTopicsPage();
 
         for (Character letter: MENU_LETTERS) {
             topicsPage.clickOnMenuLetter(letter);
 
-            Assertions.assertEquals((BasePage.BASE_URL + TopicsPage.PAGE_URL + "/#letter-" + letter),
+            Assertions.assertEquals((AppConfig.BASE_URL + AppConfig.TOPICS_PAGE_PATH + "/#letter-" + letter),
                     topicsPage.getCurrentUrl());
         }
 

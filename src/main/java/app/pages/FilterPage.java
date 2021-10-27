@@ -1,5 +1,6 @@
 package app.pages;
 
+import app.AppConfig;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -10,7 +11,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class FilterPage extends BasePage {
-    public static final String PAGE_URL = "education/materials/";
 
     @FindBy(css = ".search-results-summary > h3")
     private WebElement searchResultsAmountHeader;
@@ -57,7 +57,7 @@ public class FilterPage extends BasePage {
     }
 
     public FilterPage openPage() {
-        driver.get(BASE_URL + PAGE_URL);
+        driver.get(BASE_URL + AppConfig.FILTER_PAGE_PATH);
         wait.until(ExpectedConditions.visibilityOf(searchResultsAmountHeader));
         return this;
     }

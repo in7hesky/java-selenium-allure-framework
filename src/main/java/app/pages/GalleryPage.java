@@ -1,5 +1,6 @@
 package app.pages;
 
+import app.AppConfig;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -13,8 +14,6 @@ import java.util.NoSuchElementException;
 
 public class GalleryPage extends BasePage {
 
-    public static final String PAGE_URL = "multimedia/imagegallery/iotd.html";
-    
     @FindBy (id = "trending")
     private WebElement moreImagesButton;
 
@@ -60,7 +59,7 @@ public class GalleryPage extends BasePage {
     }
 
     public GalleryPage openPage() {
-        driver.get(BASE_URL + PAGE_URL);
+        driver.get(BASE_URL + AppConfig.GALLERY_PAGE_PATH);
         wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector("div.image"), 24));
         return this;
     }

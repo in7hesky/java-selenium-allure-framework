@@ -8,7 +8,7 @@ public class SliderTest extends BaseTest {
 
     @Test
     public void shouldHideNextButtonWhenNoNextArticleAvailable() {
-        var sliderPage = app.sliderPage.openPage();
+        var sliderPage = app.toSliderPage();
 
         sliderPage.clickNextArticleButton(8);
 
@@ -18,7 +18,7 @@ public class SliderTest extends BaseTest {
     @Test
     @Description("Checks correct switching of the topmost articles slider")
     public void shouldActivateNextArticleAfterClickingNextButton() {
-        var sliderPage = app.sliderPage.openPage();
+        var sliderPage = app.toSliderPage();
 
         sliderPage.clickNextArticleButton(1);
 

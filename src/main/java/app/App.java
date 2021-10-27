@@ -5,18 +5,27 @@ import org.openqa.selenium.WebDriver;
 
 public class App {
 
-    public final FilterPage filterPage;
-    public final  HomePage homePage;
-    public final TopicsPage topicsPage;
-    public final GalleryPage galleryPage;
-    public final SliderPage sliderPage;
-
+    private WebDriver driver;
 
     public App(WebDriver driver) {
-        this.homePage = new HomePage(driver);
-        this.topicsPage = new TopicsPage(driver);
-        this.galleryPage = new GalleryPage(driver);
-        this.sliderPage = new SliderPage(driver);
-        this.filterPage = new FilterPage(driver);
+        this.driver = driver;
+    }
+
+    public HomePage toHomePage() {
+        return new HomePage(driver).openPage();
+    }
+
+    public TopicsPage toTopicsPage() { return new TopicsPage(driver).openPage(); }
+
+    public GalleryPage toGalleryPage() {
+        return new GalleryPage(driver).openPage();
+    }
+
+    public SliderPage toSliderPage() {
+        return new SliderPage(driver).openPage();
+    }
+
+    public FilterPage toFilterPage() {
+        return new FilterPage(driver).openPage();
     }
 }

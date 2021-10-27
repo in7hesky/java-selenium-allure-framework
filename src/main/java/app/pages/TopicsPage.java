@@ -1,5 +1,6 @@
 package app.pages;
 
+import app.AppConfig;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -10,7 +11,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class TopicsPage extends BasePage {
-    public static final String PAGE_URL = "topics";
 
     @FindBy(xpath = "(//a[@title='Home Page'])[1]")
     private WebElement topLeftLogo;
@@ -33,7 +33,7 @@ public class TopicsPage extends BasePage {
     }
 
     public TopicsPage openPage() {
-        driver.get(BASE_URL + PAGE_URL);
+        driver.get(BASE_URL + AppConfig.TOPICS_PAGE_PATH);
         wait.until(ExpectedConditions.visibilityOf(topLeftLogo));
         return this;
     }

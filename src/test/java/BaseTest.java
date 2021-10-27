@@ -25,9 +25,8 @@ public class BaseTest {
 
     @BeforeAll
     public static void driverSetup()  {
-        String browserType = System.getProperty("browser");
 
-        switch (browserType) {
+        switch (WebDriverFactory.BROWSER_TYPE) {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 break;

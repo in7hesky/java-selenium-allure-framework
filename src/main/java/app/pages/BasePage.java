@@ -1,5 +1,6 @@
 package app.pages;
 
+import app.AppConfig;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -7,8 +8,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public abstract class BasePage {
-    public static final String BASE_URL = "https://www.nasa.gov/";
-    public static final Duration EXPLICIT_WAIT = Duration.ofSeconds(10);
+    public static final String BASE_URL = AppConfig.BASE_URL;
+    public static final Duration EXPLICIT_WAIT = Duration.ofSeconds(AppConfig.STANDARD_EXPLICIT_WAIT_SECONDS);
 
     protected WebDriver driver;
     protected WebDriverWait wait;

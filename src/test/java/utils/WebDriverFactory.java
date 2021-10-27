@@ -21,18 +21,22 @@ public class WebDriverFactory {
             "--window-size=1920,1080",
     };
 
+    public static final String BROWSER_TYPE =
+            System.getProperty("browser") == null ? "chrome" : System.getProperty("browser");
+
+    public static final boolean IS_HEADLESS = System.getProperty("headless") != null &&
+            Boolean.parseBoolean(System.getProperty("headless"));
+
     public static WebDriver getWebDriver() {
-        String browserType = System.getProperty("browser").toLowerCase();
-        boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless"));
-
-        String[] optionsArguments = isHeadless ? HEADLESS_ARGUMENTS : DEFAULT_ARGUMENTS;
-
-        return buildDriver(browserType, optionsArguments);
+        if (IS_HEADLESS) {
+            return buildDriver(HEADLESS_ARGUMENTS);
+        }
+        return buildDriver(DEFAULT_ARGUMENTS);
     }
 
-    private static WebDriver buildDriver(String browserType, String [] optionsArguments) {
+    private static WebDriver buildDriver(String [] optionsArguments) {
 
-        switch (browserType) {
+        switch (BROWSER_TYPE) {
             case "firefox":
                 return new FirefoxDriver(new FirefoxOptions().addArguments(optionsArguments));
 

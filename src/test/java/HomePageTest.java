@@ -13,7 +13,7 @@ public class HomePageTest extends BaseTest {
 
     @Test
     public void shouldGetAppropriateSearchResult() {
-        var homePage = app.homePage.openPage();
+        var homePage = app.toHomePage();
 
         var searchResultsPage = homePage.searchFor(SEARCH_QUERY);
         String recommendedResultName = searchResultsPage.getRecommendedName();
@@ -23,7 +23,7 @@ public class HomePageTest extends BaseTest {
 
     @Test
     public void shouldLoadMoreStoriesAfterButtonClick(){
-        var homePage = app.homePage.openPage();
+        var homePage = app.toHomePage();
 
         int initialStoriesAmount = homePage.getStoriesAmount();
         homePage.loadMoreStories();
@@ -34,7 +34,7 @@ public class HomePageTest extends BaseTest {
     @Test
     @Description("Checks behavior of a dropdown activated by hovering over it")
     public void shouldClickOnDropdownOptionAfterHovering() {
-        var homePage = app.homePage.openPage();
+        var homePage = app.toHomePage();
 
         homePage.hoverMouseOverDropdown(TARGET_DROPDOWN_NAME);
 

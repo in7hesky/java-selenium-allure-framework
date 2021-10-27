@@ -8,7 +8,7 @@ public class FilterTest extends BaseTest{
 
     @Test
     public void shouldSpawnNewSectionsByClickingOnParentFilter() {
-        var filterPage = app.filterPage.openPage();
+        var filterPage = app.toFilterPage();
 
         filterPage.clickOnDropdownElemByLabel("Audience", false);
 
@@ -20,7 +20,7 @@ public class FilterTest extends BaseTest{
     @Description("Checks if the results of filtering are in [50 - 100] bound since" +
             " actual results number may drastically change in future")
     public void shouldVerifyCorrectFilteringResults() {
-        var filterPage = app.filterPage.openPage();
+        var filterPage = app.toFilterPage();
 
         filterPage.clickOnDropdownElemByLabel("Subjects", false).
                 clickOnDropdownElemByLabel("Careers", false).

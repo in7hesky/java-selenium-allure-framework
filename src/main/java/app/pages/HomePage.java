@@ -1,5 +1,6 @@
 package app.pages;
 
+import app.AppConfig;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -78,7 +79,7 @@ public class HomePage extends BasePage {
 
 
     public HomePage openPage() {
-        driver.get(BasePage.BASE_URL);
+        driver.get(BASE_URL);
         return this;
     }
 }

@@ -1,5 +1,6 @@
 package app.pages;
 
+import app.AppConfig;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
@@ -9,8 +10,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SliderPage extends BasePage {
-
-    public static final String PAGE_URL = "solve/";
 
     @FindBy(xpath = "(//div[@aria-label='Next slide'])[1]")
     private WebElement nextSliderButton;
@@ -50,7 +49,7 @@ public class SliderPage extends BasePage {
     }
 
     public SliderPage openPage() {
-        driver.get(BASE_URL + PAGE_URL);
+        driver.get(BASE_URL + AppConfig.SLIDER_PAGE_PATH);
         wait.until(ExpectedConditions.visibilityOf(nextSliderButton));
         return this;
     }
