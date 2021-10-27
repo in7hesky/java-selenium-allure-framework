@@ -1,4 +1,5 @@
 import app.App;
+import io.qameta.allure.Flaky;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -41,6 +42,7 @@ public class SliderTest extends BaseTest {
     }
 
     @Test
+    @Flaky
     public void shouldToggleFullSizeImageView() {
         var galleryPage = app.galleryPage.openPage();
 

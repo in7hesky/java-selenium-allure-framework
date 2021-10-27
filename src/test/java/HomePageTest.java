@@ -2,10 +2,12 @@ import app.App;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import utils.WebDriverFactory;
 
+@DisplayName("Critical Path Suite")
 public class HomePageTest extends BaseTest {
     private static final String TARGET_DROPDOWN_NAME = "NASA Audiences";
     private static final String TARGET_OPTION_NAME = "For Media";

@@ -1,5 +1,7 @@
 package app.pages;
 
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
@@ -26,6 +28,7 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
+    @Step("Submitting a search query")
     public SearchResultsPage searchFor(String searchQuery) {
         searchField.sendKeys(searchQuery);
         searchField.submit();
@@ -52,16 +55,21 @@ public class HomePage extends BasePage {
 
     }
 
+    @Step("Loading more stories by clicking on a button")
     public HomePage loadMoreStories() {
         wait.until(ExpectedConditions.visibilityOf(moreStoriesButton));
         moreStoriesButton.click();
         return this;
     }
 
+    @Step("Getting current loaded stories")
+    @Attachment
     public int getStoriesAmount() {
         return stories.size();
     }
 
+    @Step("Getting current url")
+    @Attachment
     public String getCurrentUrl() {
         return driver.getCurrentUrl();
     }

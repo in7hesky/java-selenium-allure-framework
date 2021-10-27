@@ -10,11 +10,15 @@ public class WebDriverFactory {
     public static final String [] HEADLESS_ARGUMENTS = {
             "--headless",
             "--disable-gpu",
-            "--window-size=1920,1200",
+            "--window-size=1920,1080",
             "--ignore-certificate-errors",
             "--disable-extensions",
             "--no-sandbox",
             "--disable-dev-shm-usage"
+    };
+
+    public static final String [] DEFAULT_ARGUMENTS = {
+            "--window-size=1920,1080",
     };
 
     public static WebDriver getWebDriver() {
@@ -29,33 +33,27 @@ public class WebDriverFactory {
     }
 
     private static WebDriver buildDefaultDriver(String browserType) {
-        WebDriver driver;
+
         switch (browserType) {
             case "firefox":
-                driver = new FirefoxDriver();
-                break;
+                return new FirefoxDriver(new FirefoxOptions().addArguments(DEFAULT_ARGUMENTS));
+
             case "chrome":
             default:
-                driver = new ChromeDriver();
-                break;
+                return new ChromeDriver(new ChromeOptions().addArguments(DEFAULT_ARGUMENTS));
         }
-        driver.manage().window().maximize();
-        return driver;
+
     }
 
     private static WebDriver buildHeadlessDriver(String browserType) {
 
         switch (browserType) {
             case "firefox":
-                FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.addArguments(HEADLESS_ARGUMENTS);
-                return new FirefoxDriver(firefoxOptions);
+                return new FirefoxDriver(new FirefoxOptions().addArguments(HEADLESS_ARGUMENTS));
 
             case "chrome":
             default:
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments(HEADLESS_ARGUMENTS);
-                return new ChromeDriver(chromeOptions);
+                return new ChromeDriver(new ChromeOptions().addArguments(HEADLESS_ARGUMENTS));
         }
     }
 
