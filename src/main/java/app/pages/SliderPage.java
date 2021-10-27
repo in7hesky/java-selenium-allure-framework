@@ -1,5 +1,6 @@
 package app.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +22,7 @@ public class SliderPage extends BasePage {
     /**
      * @param articleIndex 1-based
      */
+    @Step("Checking if article [{0}] (1-based index) contains 'active' in attributes")
     public boolean articleIsActive(int articleIndex) {
         WebElement articleByIndex = driver.findElement(By.xpath(
                 String.format("((//div[@class='swiper-wrapper'])[1]/div)[%d]", articleIndex)
@@ -29,6 +31,7 @@ public class SliderPage extends BasePage {
         return articleByIndex.getAttribute("class").contains("active");
     }
 
+    @Step("Switching to the next slider article")
     public SliderPage clickNextArticleButton(int timesToClick) {
         for (int i = 0; i < timesToClick; i++) {
             nextSliderButton.click();
@@ -36,6 +39,7 @@ public class SliderPage extends BasePage {
         return this;
     }
 
+    @Step("Checking if the next button is hidden")
     public boolean nextButtonIsHidden() {
         try {
             nextSliderButton.click();

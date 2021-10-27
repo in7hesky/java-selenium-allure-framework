@@ -1,5 +1,6 @@
 package app.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -18,13 +19,14 @@ public class TopicsPage extends BasePage {
         super(driver);
     }
 
-
+    @Step("Clicking on the menu section button {0}")
     public void clickOnMenuLetter(Character letter) {
         WebElement menuLetter = driver.findElement(By.xpath(String.format(
                 "//div[@id='tag-anchors']//a[contains(., '%c')]", letter)));
         menuLetter.click();
     }
 
+    @Step("Clicking on the top-left NASA logo")
     public HomePage clickOnNasaLogo() {
         topLeftLogo.click();
         return new HomePage(driver);

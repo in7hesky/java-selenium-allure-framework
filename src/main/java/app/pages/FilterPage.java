@@ -1,6 +1,11 @@
 package app.pages;
 
-import org.openqa.selenium.*;
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -14,6 +19,8 @@ public class FilterPage extends BasePage {
         super(driver);
     }
 
+    @Step("Checking visibility of filter '{0}' section")
+    @Attachment
     public boolean filterSectionLabelIsVisible(String labelName) {
 
         try {
@@ -25,6 +32,8 @@ public class FilterPage extends BasePage {
         return true;
     }
 
+    @Step("Getting search results number")
+    @Attachment
     public int getSearchResultsAmount() {
         wait.until(ExpectedConditions.not(
                 ExpectedConditions.textToBe(By.cssSelector(".search-results-summary > h3"),"No results")));
@@ -33,7 +42,7 @@ public class FilterPage extends BasePage {
     }
 
 
-
+    @Step("Clicking On Filter's '{0}' Dropdown")
     public FilterPage clickOnDropdownElemByLabel(String labelName, boolean isCheckbox) {
         String locator = "//label[contains(text(), '%s')]/preceding-sibling::";
         if (isCheckbox) {

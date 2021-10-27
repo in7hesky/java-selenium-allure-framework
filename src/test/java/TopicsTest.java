@@ -1,51 +1,16 @@
-import app.App;
 import app.pages.BasePage;
 import app.pages.TopicsPage;
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
-import org.openqa.selenium.WebDriver;
-import utils.WebDriverFactory;
 
-@Execution(ExecutionMode.CONCURRENT)
+@DisplayName("Topics Page Links")
 public class TopicsTest extends BaseTest {
-    private ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-
-    @BeforeEach
-    public void initDriver() {
-        driver.set(WebDriverFactory.getWebDriver());
-        app = new App(getDriver());
-    }
-
-    protected  WebDriver getDriver() {
-        return driver.get();
-    }
+    private static final char [] MENU_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     @Test
-    public void shouldSpawnNewSectionsByClickingOnParentFilter() {
-        var filterPage = app.filterPage.openPage();
-
-        filterPage.clickOnDropdownElemByLabel("Audience", false);
-
-        Assertions.assertTrue(filterPage.filterSectionLabelIsVisible("Educators"));
-        Assertions.assertTrue(filterPage.filterSectionLabelIsVisible("Students"));
-    }
-
-    @Test
-    public void shouldVerifyCorrectFilteringResults() {
-        var filterPage = app.filterPage.openPage();
-
-        filterPage.clickOnDropdownElemByLabel("Subjects", false).
-                clickOnDropdownElemByLabel("Careers", false).
-                clickOnDropdownElemByLabel("Computer Science", true);
-        int resultsAmount = filterPage.getSearchResultsAmount();
-
-        Assertions.assertTrue(resultsAmount >= 50 && resultsAmount <= 100 );
-    }
-
-    @Test
+    @Description("Clicks on top-left NASA logo to assure correct linking to the Home Page")
     public void shouldGetToHomePageAfterClickingOnLogo() {
         var topicsPage = app.topicsPage.openPage();
 
@@ -54,13 +19,12 @@ public class TopicsTest extends BaseTest {
         Assertions.assertEquals(BasePage.BASE_URL, currentUrl);
     }
 
-
     @Test
+    @Description("Checks in URL each time if path now contains a link to an appropriate section in of a page")
     public void shouldVerifyCorrectMenuLettersPointing() {
         var topicsPage = app.topicsPage.openPage();
-        char[] menuLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
-        for (Character letter: menuLetters) {
+        for (Character letter: MENU_LETTERS) {
             topicsPage.clickOnMenuLetter(letter);
 
             Assertions.assertEquals((BasePage.BASE_URL + TopicsPage.PAGE_URL + "/#letter-" + letter),

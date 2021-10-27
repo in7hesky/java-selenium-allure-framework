@@ -1,5 +1,7 @@
 package app.pages;
 
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,7 +24,11 @@ public class GalleryPage extends BasePage {
     @FindBy (css = "img.img-responsive")
     private WebElement imageInFullSize;
 
+    public GalleryPage(WebDriver driver) {
+        super(driver);
+    }
 
+    @Step("Checking visibility of full-size image")
     public boolean fullSizeViewModeIsOn() {
         try {
             wait.until(ExpectedConditions.visibilityOf(imageInFullSize));
@@ -32,14 +38,25 @@ public class GalleryPage extends BasePage {
         return true;
     }
 
+    @Step("Clicking on image [{0}] to view in full-size")
     public GalleryPage clickOnImageForFullSizeView(int imageIndex) {
         loadedImages.get(imageIndex).click();
         return this;
     }
 
+    @Step("Getting current loaded images number")
+    @Attachment
+    public int getCurrentImagesAmount() {
+        return loadedImages.size();
+    }
 
-    public GalleryPage(WebDriver driver) {
-        super(driver);
+    @Step("Getting more images by clicking on button")
+    public GalleryPage clickMoreImagesButton() {
+        int imagesAmountBeforeLastLoading = getCurrentImagesAmount();
+        moreImagesButton.click();
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(
+                By.cssSelector("div.image"), imagesAmountBeforeLastLoading));
+        return this;
     }
 
     public GalleryPage openPage() {
@@ -48,15 +65,4 @@ public class GalleryPage extends BasePage {
         return this;
     }
 
-    public int getCurrentImagesAmount() {
-        return loadedImages.size();
-    }
-
-    public GalleryPage clickMoreImagesButton() {
-        int imagesAmountBeforeLastLoading = getCurrentImagesAmount();
-        moreImagesButton.click();
-        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(
-                By.cssSelector("div.image"), imagesAmountBeforeLastLoading));
-        return this;
-    }
 }

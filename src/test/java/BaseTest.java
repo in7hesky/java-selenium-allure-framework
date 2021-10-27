@@ -1,21 +1,27 @@
 import app.App;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.BeforeAll;
-
-
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
-
+import org.openqa.selenium.WebDriver;
 import utils.TestListener;
+import utils.WebDriverFactory;
 
 
 @ExtendWith(TestListener.class)
 @Execution(ExecutionMode.CONCURRENT)
 public class BaseTest {
 
-    protected App app;
+    public App app;
+    public final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+
+    @BeforeEach
+    public void initDriver() {
+        driver.set(WebDriverFactory.getWebDriver());
+        app = new App(getDriver());
+    }
 
     @BeforeAll
     public static void driverSetup()  {
@@ -31,6 +37,10 @@ public class BaseTest {
         }
 
 
+    }
+
+    protected  WebDriver getDriver() {
+        return driver.get();
     }
 
 }

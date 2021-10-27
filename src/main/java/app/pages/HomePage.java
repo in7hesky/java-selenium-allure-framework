@@ -35,6 +35,7 @@ public class HomePage extends BasePage {
         return new SearchResultsPage(driver);
     }
 
+    @Step("Checking ability to click on option in dropdown menu")
     public boolean canClickOnDropdownOption(String optionName) {
         try {
             driver.findElement(By.xpath(
@@ -45,6 +46,7 @@ public class HomePage extends BasePage {
       return true;
     }
 
+    @Step("Hovering over a dropdown menu to make options appear")
     public HomePage hoverMouseOverDropdown(String dropdownName) {
         WebElement targetDropdown = driver.findElement(By.xpath(
                 String.format("//li[contains(., '%s')]", dropdownName)));
@@ -76,7 +78,6 @@ public class HomePage extends BasePage {
 
 
     public HomePage openPage() {
-
         driver.get(BasePage.BASE_URL);
         return this;
     }

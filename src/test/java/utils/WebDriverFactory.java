@@ -25,36 +25,22 @@ public class WebDriverFactory {
         String browserType = System.getProperty("browser").toLowerCase();
         boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless"));
 
-        if (isHeadless) {
-            return buildHeadlessDriver(browserType);
-        } else {
-            return buildDefaultDriver(browserType);
-        }
+        String[] optionsArguments = isHeadless ? HEADLESS_ARGUMENTS : DEFAULT_ARGUMENTS;
+
+        return buildDriver(browserType, optionsArguments);
     }
 
-    private static WebDriver buildDefaultDriver(String browserType) {
+    private static WebDriver buildDriver(String browserType, String [] optionsArguments) {
 
         switch (browserType) {
             case "firefox":
-                return new FirefoxDriver(new FirefoxOptions().addArguments(DEFAULT_ARGUMENTS));
+                return new FirefoxDriver(new FirefoxOptions().addArguments(optionsArguments));
 
             case "chrome":
             default:
-                return new ChromeDriver(new ChromeOptions().addArguments(DEFAULT_ARGUMENTS));
+                return new ChromeDriver(new ChromeOptions().addArguments(optionsArguments));
         }
 
-    }
-
-    private static WebDriver buildHeadlessDriver(String browserType) {
-
-        switch (browserType) {
-            case "firefox":
-                return new FirefoxDriver(new FirefoxOptions().addArguments(HEADLESS_ARGUMENTS));
-
-            case "chrome":
-            default:
-                return new ChromeDriver(new ChromeOptions().addArguments(HEADLESS_ARGUMENTS));
-        }
     }
 
 }

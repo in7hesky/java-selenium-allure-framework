@@ -1,5 +1,7 @@
 package app.pages;
 
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,7 +16,8 @@ public class SearchResultsPage extends BasePage {
         super(driver);
         wait.until(ExpectedConditions.visibilityOf(recommendedName));
     }
-
+    @Step("Getting recommended result's header")
+    @Attachment
     public String getRecommendedName() {
         return recommendedName.getText();
     }

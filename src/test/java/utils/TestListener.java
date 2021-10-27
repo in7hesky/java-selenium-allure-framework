@@ -44,8 +44,7 @@ public class TestListener implements TestWatcher {
         Object instance = context.getRequiredTestInstance();
 
         try {
-            Field field = instance.getClass().getDeclaredField("driver");
-            field.setAccessible(true);
+            Field field = instance.getClass().getField("driver");
             return ((ThreadLocal<WebDriver>) field.get(instance)).get();
         } catch (NoSuchFieldException | IllegalAccessException e){
             throw new RuntimeException(e);
