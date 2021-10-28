@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @DisplayName("Slider Behavior")
 public class SliderTest extends BaseTest {
 
@@ -12,7 +14,8 @@ public class SliderTest extends BaseTest {
 
         sliderPage.clickNextArticleButton(8);
 
-        Assertions.assertTrue(sliderPage.nextButtonIsHidden());
+        assertThat(sliderPage.nextButtonIsHidden()).isTrue();
+        //Assertions.assertTrue(sliderPage.nextButtonIsHidden());
     }
 
     @Test
@@ -22,7 +25,8 @@ public class SliderTest extends BaseTest {
 
         sliderPage.clickNextArticleButton(1);
 
-        Assertions.assertTrue(sliderPage.articleIsActive(2));
+        assertThat(sliderPage.articleIsActive(2)).isTrue();
+        //Assertions.assertTrue(sliderPage.articleIsActive(2));
     }
 
 }

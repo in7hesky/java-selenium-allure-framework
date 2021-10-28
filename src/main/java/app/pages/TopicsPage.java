@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class TopicsPage extends BasePage {
 
+    public static final String PAGE_URL = BASE_URL + AppConfig.TOPICS_PAGE_PATH;
+
     @FindBy(xpath = "(//a[@title='Home Page'])[1]")
     private WebElement topLeftLogo;
 
@@ -33,7 +35,7 @@ public class TopicsPage extends BasePage {
     }
 
     public TopicsPage openPage() {
-        driver.get(BASE_URL + AppConfig.TOPICS_PAGE_PATH);
+        driver.get(PAGE_URL);
         wait.until(ExpectedConditions.visibilityOf(topLeftLogo));
         return this;
     }

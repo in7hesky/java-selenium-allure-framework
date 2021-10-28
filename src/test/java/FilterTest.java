@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @DisplayName("Filtering Behavior")
 public class FilterTest extends BaseTest{
 
@@ -12,8 +14,10 @@ public class FilterTest extends BaseTest{
 
         filterPage.clickOnDropdownElemByLabel("Audience", false);
 
-        Assertions.assertTrue(filterPage.filterSectionLabelIsVisible("Educators"));
-        Assertions.assertTrue(filterPage.filterSectionLabelIsVisible("Students"));
+        assertThat(filterPage.filterSectionLabelIsVisible("Educators")).isTrue();
+        assertThat(filterPage.filterSectionLabelIsVisible("Students")).isTrue();
+//        Assertions.assertTrue(filterPage.filterSectionLabelIsVisible("Educators"));
+//        Assertions.assertTrue(filterPage.filterSectionLabelIsVisible("Students"));
     }
 
     @Test
@@ -27,6 +31,7 @@ public class FilterTest extends BaseTest{
                 clickOnDropdownElemByLabel("Computer Science", true);
         int resultsAmount = filterPage.getSearchResultsAmount();
 
-        Assertions.assertTrue(resultsAmount >= 50 && resultsAmount <= 100 );
+        assertThat(resultsAmount).isBetween(50, 100);
+        //Assertions.assertTrue(resultsAmount >= 50 && resultsAmount <= 100 );
     }
 }

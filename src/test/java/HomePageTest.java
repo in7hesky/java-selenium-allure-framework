@@ -1,7 +1,11 @@
 import io.qameta.allure.Description;
-import org.junit.jupiter.api.Assertions;
+//import org.junit.jupiter.api.Assertions;
+import org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 @DisplayName("Home Page Interactions")
 public class HomePageTest extends BaseTest {
@@ -18,7 +22,8 @@ public class HomePageTest extends BaseTest {
         var searchResultsPage = homePage.searchFor(SEARCH_QUERY);
         String recommendedResultName = searchResultsPage.getRecommendedName();
 
-        Assertions.assertTrue(recommendedResultName.equalsIgnoreCase(SEARCH_TARGET));
+        assertThat(recommendedResultName).isEqualToIgnoringCase(SEARCH_TARGET);
+        //Assertions.assertTrue(recommendedResultName.equalsIgnoreCase(SEARCH_TARGET));
     }
 
     @Test
@@ -28,7 +33,8 @@ public class HomePageTest extends BaseTest {
         int initialStoriesAmount = homePage.getStoriesAmount();
         homePage.loadMoreStories();
 
-        Assertions.assertTrue(initialStoriesAmount < homePage.getStoriesAmount());
+        assertThat(initialStoriesAmount).isLessThan(homePage.getStoriesAmount());
+        //Assertions.assertTrue(initialStoriesAmount < homePage.getStoriesAmount());
     }
 
     @Test
@@ -38,6 +44,7 @@ public class HomePageTest extends BaseTest {
 
         homePage.hoverMouseOverDropdown(TARGET_DROPDOWN_NAME);
 
-        Assertions.assertTrue(homePage.canClickOnDropdownOption(TARGET_OPTION_NAME));
+        assertThat(homePage.canClickOnDropdownOption(TARGET_OPTION_NAME)).isTrue();
+        //Assertions.assertTrue(homePage.canClickOnDropdownOption(TARGET_OPTION_NAME));
     }
 }

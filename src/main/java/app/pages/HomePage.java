@@ -1,5 +1,6 @@
 package app.pages;
 
+import app.App;
 import app.AppConfig;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
@@ -15,6 +16,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
 public class HomePage extends BasePage {
+
+    public static final String PAGE_URL = BASE_URL + AppConfig.HOME_PAGE_PATH;
 
     @FindBy(id = "trending")
     private WebElement moreStoriesButton;
@@ -79,7 +82,7 @@ public class HomePage extends BasePage {
 
 
     public HomePage openPage() {
-        driver.get(BASE_URL);
+        driver.get(PAGE_URL);
         return this;
     }
 }

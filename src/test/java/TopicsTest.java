@@ -1,10 +1,13 @@
 import app.AppConfig;
 import app.pages.BasePage;
+import app.pages.HomePage;
 import app.pages.TopicsPage;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Topics Page Links")
 public class TopicsTest extends BaseTest {
@@ -17,7 +20,8 @@ public class TopicsTest extends BaseTest {
 
         String currentUrl = topicsPage.clickOnNasaLogo().getCurrentUrl();
 
-        Assertions.assertEquals(AppConfig.BASE_URL + AppConfig.HOME_PAGE_PATH, currentUrl);
+        assertThat(HomePage.PAGE_URL).isEqualTo(currentUrl);
+        //Assertions.assertEquals(AppConfig.BASE_URL + AppConfig.HOME_PAGE_PATH, currentUrl);
     }
 
     @Test
@@ -25,11 +29,13 @@ public class TopicsTest extends BaseTest {
     public void shouldVerifyCorrectMenuLettersPointing() {
         var topicsPage = app.toTopicsPage();
 
+
         for (Character letter: MENU_LETTERS) {
             topicsPage.clickOnMenuLetter(letter);
 
-            Assertions.assertEquals((AppConfig.BASE_URL + AppConfig.TOPICS_PAGE_PATH + "/#letter-" + letter),
-                    topicsPage.getCurrentUrl());
+            assertThat(TopicsPage.PAGE_URL + "/#letter-" + letter).isEqualTo(topicsPage.getCurrentUrl());
+//            Assertions.assertEquals((AppConfig.BASE_URL + AppConfig.TOPICS_PAGE_PATH + "/#letter-" + letter),
+//                    topicsPage.getCurrentUrl());
         }
 
     }

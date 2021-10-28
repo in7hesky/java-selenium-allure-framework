@@ -9,7 +9,7 @@ import java.time.Duration;
 
 public abstract class BasePage {
     public static final String BASE_URL = AppConfig.BASE_URL;
-    public static final Duration EXPLICIT_WAIT = Duration.ofSeconds(AppConfig.STANDARD_EXPLICIT_WAIT_SECONDS);
+    private static final Duration EXPLICIT_WAIT = Duration.ofSeconds(AppConfig.STANDARD_EXPLICIT_WAIT_SECONDS);
 
     protected WebDriver driver;
     protected WebDriverWait wait;
