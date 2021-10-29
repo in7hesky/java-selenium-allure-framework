@@ -25,7 +25,7 @@ public class TopicsTest extends BaseTest {
     }
 
     @Test
-    @Description("Checks in URL each time if path now contains a link to an appropriate section in of a page")
+    @Description("Checks each time if url path now contains a link to an appropriate section of a page")
     public void shouldVerifyCorrectMenuLettersPointing() {
         var topicsPage = app.toTopicsPage();
 
