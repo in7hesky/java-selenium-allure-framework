@@ -1,5 +1,4 @@
 import io.qameta.allure.Description;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +14,6 @@ public class SliderTest extends BaseTest {
         sliderPage.clickNextArticleButton(8);
 
         assertThat(sliderPage.nextButtonIsHidden()).isTrue();
-        //Assertions.assertTrue(sliderPage.nextButtonIsHidden());
     }
 
     @Test
@@ -26,7 +24,6 @@ public class SliderTest extends BaseTest {
         sliderPage.clickNextArticleButton(1);
 
         assertThat(sliderPage.articleIsActive(2)).isTrue();
-        //Assertions.assertTrue(sliderPage.articleIsActive(2));
     }
 
 }

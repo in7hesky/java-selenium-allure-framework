@@ -25,7 +25,6 @@ public class BaseTest {
 
     @BeforeAll
     public static void driverSetup()  {
-
         switch (WebDriverFactory.BROWSER_TYPE) {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
@@ -34,8 +33,6 @@ public class BaseTest {
             default:
                 WebDriverManager.chromedriver().setup();
         }
-
-
     }
 
     protected  WebDriver getDriver() {

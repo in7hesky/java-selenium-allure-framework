@@ -1,7 +1,6 @@
 package utils;
 
 import io.qameta.allure.Allure;
-import io.qameta.allure.Attachment;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
 import org.openqa.selenium.OutputType;

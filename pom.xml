@@ -110,7 +110,7 @@
 
 
     <build>
-        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+        <pluginManagement>
             <plugins>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
@@ -144,7 +144,6 @@
                     <groupId>io.qameta.allure</groupId>
                     <artifactId>allure-maven</artifactId>
                     <version>2.10.0</version>
-<!--                    <version>LATEST_VERSION</version>-->
                     <configuration>
                         <reportVersion>2.4.1</reportVersion>
                     </configuration>

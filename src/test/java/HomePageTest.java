@@ -1,9 +1,8 @@
 import io.qameta.allure.Description;
 //import org.junit.jupiter.api.Assertions;
-import org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.assertj.core.api.Assertions.*;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -23,7 +22,6 @@ public class HomePageTest extends BaseTest {
         String recommendedResultName = searchResultsPage.getRecommendedName();
 
         assertThat(recommendedResultName).isEqualToIgnoringCase(SEARCH_TARGET);
-        //Assertions.assertTrue(recommendedResultName.equalsIgnoreCase(SEARCH_TARGET));
     }
 
     @Test
@@ -34,7 +32,6 @@ public class HomePageTest extends BaseTest {
         homePage.loadMoreStories();
 
         assertThat(initialStoriesAmount).isLessThan(homePage.getStoriesAmount());
-        //Assertions.assertTrue(initialStoriesAmount < homePage.getStoriesAmount());
     }
 
     @Test
@@ -45,6 +42,5 @@ public class HomePageTest extends BaseTest {
         homePage.hoverMouseOverDropdown(TARGET_DROPDOWN_NAME);
 
         assertThat(homePage.canClickOnDropdownOption(TARGET_OPTION_NAME)).isTrue();
-        //Assertions.assertTrue(homePage.canClickOnDropdownOption(TARGET_OPTION_NAME));
     }
 }

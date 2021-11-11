@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,7 +12,6 @@ public class GalleryTest extends BaseTest {
         galleryPage.clickOnImageForFullSizeView(0);
 
         assertThat(galleryPage.fullSizeViewModeIsOn()).isTrue();
-        //Assertions.assertTrue(galleryPage.fullSizeViewModeIsOn());
     }
 
     @Test
@@ -24,6 +22,5 @@ public class GalleryTest extends BaseTest {
         galleryPage.clickMoreImagesButton();
 
         assertThat(imagesInitialAmount * 2).isEqualTo(galleryPage.getCurrentImagesAmount());
-        //Assertions.assertEquals(imagesInitialAmount * 2, galleryPage.getCurrentImagesAmount());
     }
 }

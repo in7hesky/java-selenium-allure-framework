@@ -1,5 +1,4 @@
 import io.qameta.allure.Description;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,8 +15,6 @@ public class FilterTest extends BaseTest{
 
         assertThat(filterPage.filterSectionLabelIsVisible("Educators")).isTrue();
         assertThat(filterPage.filterSectionLabelIsVisible("Students")).isTrue();
-//        Assertions.assertTrue(filterPage.filterSectionLabelIsVisible("Educators"));
-//        Assertions.assertTrue(filterPage.filterSectionLabelIsVisible("Students"));
     }
 
     @Test
@@ -32,6 +29,5 @@ public class FilterTest extends BaseTest{
         int resultsAmount = filterPage.getSearchResultsAmount();
 
         assertThat(resultsAmount).isBetween(50, 100);
-        //Assertions.assertTrue(resultsAmount >= 50 && resultsAmount <= 100 );
     }
 }
