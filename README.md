@@ -4,12 +4,12 @@ This is an example of Web UI testing framework using Selenium.
 
 System Under Test (SUT): NASA official website - https://www.nasa.gov/. 
 
-Some of the used tools and libraries:
+List of main tools and libraries used:
 
-- Selenium WebDriver
-- Selenium-Java library
-- JUnit 5
-- Allure
+- Maven
+- Junit5
+- Selenium-Java
+- WebDriverManager
 - Allure-Junit5
 - AssertJ
 - Allure-AssertJ
