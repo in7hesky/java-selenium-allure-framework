@@ -6,9 +6,10 @@ System Under Test (SUT): NASA official website - https://www.nasa.gov/.
 
 Some of the used tools and libraries:
 
-- Selenium WebDriver
-- Selenium-Java library
-- JUnit 5
+- Maven
+- Junit5
+- Selenium-Java
+- WebDriverManager
 - Allure
 - Allure-Junit5
 - AssertJ
